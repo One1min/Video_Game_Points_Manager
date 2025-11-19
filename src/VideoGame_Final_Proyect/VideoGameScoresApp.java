@@ -8,6 +8,10 @@ public class VideoGameScoresApp {
          Scoreboard myScoreboard = new Scoreboard();
 //  Load data files on start, we will call two methods here to read data from files
 // Show menu loop and collect user’s choice with Scanner
+//         Game newObj = new Game();
+//         Game obj2 = newObj.fromdataLine("6,Hello,Hola,Bonjour,Salamalecum");
+//         System.out.println(obj2);
+
          while(true) {
              int choice = -1;
              do {
