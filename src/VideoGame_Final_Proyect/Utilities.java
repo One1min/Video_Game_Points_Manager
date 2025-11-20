@@ -11,4 +11,11 @@ public class Utilities {
         return choice;
 
     }
+    public  static void showArrays(int[] list){
+        System.out.print("{");
+        for (int i : list) {
+            System.out.print(" " + i + " ");
+        }
+        System.out.println("}");
+    }
 }

@@ -1,16 +1,26 @@
 package VideoGame_Final_Proyect;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class VideoGameScoresApp {
      static void main() {
          //Create Scoreboard
          Scoreboard myScoreboard = new Scoreboard();
-//  Load data files on start, we will call two methods here to read data from files
-// Show menu loop and collect user’s choice with Scanner
-//         Game newObj = new Game();
-//         Game obj2 = newObj.fromdataLine("6,Hello,Hola,Bonjour,Salamalecum");
-//         System.out.println(obj2);
+/*
+  Load data files on start, we will call two methods here to read data from files
+ Show menu loop and collect user’s choice with Scanner
+
+test for Game.fromDataLine method
+         Game newObj = new Game();
+         Game obj2 = newObj.fromDataLine("6,Hello,Hola,Bonjour,Salamalecum");
+         System.out.println(obj2);
+test for Students.getTotal method & Students.toString method
+         Students newObj = new Students();
+         System.out.println(newObj.getTotal());
+         System.out.println(Arrays.toString(newObj.getScores()));
+*/
+
 
          while(true) {
              int choice = -1;
