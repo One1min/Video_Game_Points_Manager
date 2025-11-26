@@ -1,10 +1,11 @@
 package VideoGame_Final_Proyect;
 
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class VideoGameScoresApp {
-     static void main() {
+     static void main() throws FileNotFoundException {
          //Create Scoreboard
          Scoreboard myScoreboard = new Scoreboard();
 /*
@@ -19,9 +20,11 @@ test for Students.getTotal method & Students.toString method
          Students newObj = new Students();
          System.out.println(newObj.getTotal());
          System.out.println(Arrays.toString(newObj.getScores()));
+
+
+Scoreboard scoreboard = new Scoreboard();
+scoreboard.loadGame("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-Proyect/src/VideoGame_Final_Proyect/games.txt");
 */
-
-
          while(true) {
              int choice = -1;
              do {
@@ -112,7 +115,7 @@ test for Students.getTotal method & Students.toString method
 
     }   private static void HandeSaveData() {
         System.out.println("Hande Save Data");
-
+        
     }
 
 

@@ -12,6 +12,7 @@ public class Students {
         this.name = name;
         this.scores = scores;
     }
+
     public Students() {
         this.id = "";
         this.name = "";
@@ -41,37 +42,50 @@ public class Students {
     public void setScores(int[] scores) {
         this.scores = scores;
     }
-    public int getTotal(){
-        int ans = 0 ;
+
+    public int getTotal() {
+        int ans = 0;
         for (int score : this.scores) {
-            ans +=score;
+            ans += score;
         }
         return ans;
     }
-    public double getAverage(){
+
+    public double getAverage() {
         return (double) this.getTotal() / this.scores.length;
     }
-    public String toString(){
-        return String.format("%s     %s     %s", this.getId(),this.getName(),Arrays.toString(this.getScores()));
+
+    public String toString() {
+        return String.format("%s     %s     %s", this.getId(), this.getName(), Arrays.toString(this.getScores()));
     }
-    public static Students fromDataLine(String line){
+
+    public static Students fromDataLine(String line) {
         String[] parts = line.split(",");
         String id = parts[0];
         String name = parts[1];
         int[] number = new int[10];
-        for (int i = 2; i<12; i++){
-            number[i-2] = Integer.parseInt(parts[i].trim());
+        for (int i = 2; i < 12; i++) {
+            number[i - 2] = Integer.parseInt(parts[i].trim());
         }
-        return new Students(id,name,number);
+        return new Students(id, name, number);
 
     }
-    public boolean equals(Students parameters){
-        for(int i = 0; i<parameters.getScores().length;i++){
-            if(this.scores[i] != parameters.getScores()[i]){
+
+    public boolean equals(Students parameters) {
+        for (int i = 0; i < parameters.getScores().length; i++) {
+            if (this.scores[i] != parameters.getScores()[i]) {
                 return false;
             }
         }
         return this.getId().equalsIgnoreCase(parameters.getId())
                 && this.getName().equalsIgnoreCase(parameters.getName());
+    }
+
+    public String toDataLine() {
+        String result = getId() + "," +getName();
+        for (int i = 0; i< this.getScores().length; i++){
+            result = result + "," + getScores()[i];
+        }
+        return result;
     }
 }

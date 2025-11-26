@@ -61,7 +61,7 @@ return this.getTitle().equalsIgnoreCase(parameters.getTitle()) &&
     public  String toDataLine(){
         return this.getId() +" "+ this.getTitle() +" "+ this.getGenre() + " " + this.getPublisher();
     }
-    public Game fromDataLine(String line){
+    public static Game fromDataLine(String line){
         String[] parts = line.split(",");
         for(int i = 0; i<parts.length; i++){
             System.out.println("Part " + (i+1) + ": " + parts[i]);
