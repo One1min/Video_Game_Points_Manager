@@ -20,11 +20,11 @@ test for Students.getTotal method & Students.toString method
          Students newObj = new Students();
          System.out.println(newObj.getTotal());
          System.out.println(Arrays.toString(newObj.getScores()));
-
-
+*/
 Scoreboard scoreboard = new Scoreboard();
 scoreboard.loadGame("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-Proyect/src/VideoGame_Final_Proyect/games.txt");
-*/
+scoreboard.loadStudents("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-Proyect/src/VideoGame_Final_Proyect/scores.txt");
+
          while(true) {
              int choice = -1;
              do {
@@ -37,12 +37,12 @@ scoreboard.loadGame("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-Proye
                      break;
                  case 1:
                      System.out.println("---------------------------------------------------");
-                     handleListGames();
+                     handleListGames(scoreboard);
                      System.out.println("---------------------------------------------------");
                      break;
                  case 2:
                      System.out.println("---------------------------------------------------");
-                     handleListStudents();
+                     handleListStudents(scoreboard);
                      System.out.println("---------------------------------------------------");
                      break;
                  case 3:
@@ -79,7 +79,7 @@ scoreboard.loadGame("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-Proye
          }
 // Validate inputs (IDs exist, scores >= 0)
 // Save on command or exit
-     }
+}
 
     private static void printMenu() {
         System.out.println("1. Handle List Games\n" +
@@ -92,11 +92,13 @@ scoreboard.loadGame("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-Proye
                 "8. Hande Save Data");
 
     }
-    private static void handleListGames() {
+    private static void handleListGames(Scoreboard sb) {
         System.out.println("Handle List Games");
+        sb.listGame();
 
-    }   private static void handleListStudents() {
+    }   private static void handleListStudents(Scoreboard sb) {
         System.out.println("Handle List Students");
+        sb.listStudents();
 
     }   private static void handleStudentReport() {
         System.out.println("Handle Student Report");

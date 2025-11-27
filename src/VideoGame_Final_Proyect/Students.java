@@ -88,4 +88,9 @@ public class Students {
         }
         return result;
     }
+    public String scoreToString(){
+        String result = "";
+        for(int i =0; i<this.getScores().length; i++) result = result +  this.getScores()[i];
+        return result;
+    }
 }
