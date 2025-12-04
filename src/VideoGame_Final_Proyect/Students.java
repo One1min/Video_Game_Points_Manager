@@ -93,4 +93,7 @@ public class Students {
         for(int i =0; i<this.getScores().length; i++) result = result +  this.getScores()[i];
         return result;
     }
+    public int getScoreAt(int gameIndex){
+        return this.scores[gameIndex];
+    }
 }
