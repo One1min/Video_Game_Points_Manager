@@ -3,7 +3,7 @@ package VideoGame_Final_Proyect;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
-
+//Java project
 public class VideoGameScoresApp {
      static void main() throws FileNotFoundException {
          //Create Scoreboard
