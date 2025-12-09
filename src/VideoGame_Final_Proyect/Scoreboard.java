@@ -107,10 +107,15 @@ public class Scoreboard {
         this.studentCount = i;
     }
 
-    public void listGame() {
+    public String listGame() {
+        System.out.println("=======================================================================================================");
+        String listGames = "";
         for (Game g : this.getGames()) {
             System.out.println(g);
+             listGames = listGames + g;
         }
+        System.out.println("=======================================================================================================");
+        return listGames;
     }
 
     public void listStudents() {
@@ -166,20 +171,21 @@ public class Scoreboard {
         return gameScore;
     }
 
-    public Stats computeStatsForGame(int gameIndex) {
+    public Stats computeStatsForGame (int gameIndex) throws FileNotFoundException{
         int[] gameScore = new int[this.studentCount];
-        // get scores for all students for all the students
+
         for (int i = 0; i < this.studentCount; i++) {
             Students s = this.getStudents()[i];
             int[] allScore = s.getScores();
-            int score = allScore[gameIndex];
-            System.out.println(score + ", ");
+            int score = allScore[gameIndex - 1];
+            gameScore[i] = score;
         }
+
         int min = Utilities.findLowest(gameScore);
         int max = Utilities.findHighest(gameScore);
         double avg = Utilities.findAverage(gameScore);
-        Stats stats = new Stats(min, max, avg);
-        return stats;
+        System.out.println("Min: " + min + " Max: " + max + " Avg: " + avg);
+        return new Stats(min, max, avg);
     }
     public void showTopNForGame(int gameIndex, int n) {
         int[] allScores = this.findStudentScoresForGame(gameIndex);
@@ -196,5 +202,8 @@ public class Scoreboard {
         }
 
     }
-
+    public void addStudent(Students newStudent ){
+    this.students[this.studentCount] = newStudent;
+    studentCount++;
+    }
 }
