@@ -1,11 +1,12 @@
 package VideoGame_Final_Proyect;
 
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 //Java project
 public class VideoGameScoresApp {
-     static void main() throws FileNotFoundException {
+     static void main() throws IOException {
          //Create Scoreboard
          Scoreboard myScoreboard = new Scoreboard();
 /*
@@ -31,51 +32,54 @@ scoreboard.loadStudents("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-P
          while(true) {
              int choice = -1;
              do {
+                 System.out.println("------------------------------------------------------------------------------------------------------");
+                 System.out.println("=======================================================================================================");
                  printMenu();
+                 System.out.println("=======================================================================================================");
+                 System.out.println("------------------------------------------------------------------------------------------------------");
+
                  choice = Utilities.getUserChoice("Please, enter choice: ");
              } while ((choice < 0) || (choice > 8));
              switch (choice) {
                  case 0:
                      System.exit(0);
+                     for (int i = 0; i < 4; i++) {
+                         System.out.println();
+                     }
                      break;
                  case 1:
-                     System.out.println("------------------------------------------------------------------------------------------------------");
                      handleListGames(scoreboard);
-                     System.out.println("------------------------------------------------------------------------------------------------------");
+                     for (int i = 0; i < 4; i++) {
+                         System.out.println();
+                     }
                      break;
                  case 2:
-                     System.out.println("------------------------------------------------------------------------------------------------------");
                      handleListStudents(scoreboard);
+                     System.out.println();
                      break;
                  case 3:
-                     System.out.println("------------------------------------------------------------------------------------------------------");
                      handleStudentReport(scoreboard);
-                     System.out.println("------------------------------------------------------------------------------------------------------");
+                     for (int i = 0; i < 4; i++) {
+                         System.out.println();
+                     }
                      break;
                  case 4:
-                     System.out.println("------------------------------------------------------------------------------------------------------");
                      handleTopNforAgame(scoreboard);
-                     System.out.println("------------------------------------------------------------------------------------------------------");
+                     for (int i = 0; i < 4; i++) {
+                         System.out.println();
+                     }
                      break;
                  case 5:
-                     System.out.println("------------------------------------------------------------------------------------------------------");
                      handleUpdateStudentScore(scoreboard);
-                     System.out.println("------------------------------------------------------------------------------------------------------");
                      break;
                  case 6:
-                     System.out.println("------------------------------------------------------------------------------------------------------");
                      handleGameStats(scoreboard);
-                     System.out.println("------------------------------------------------------------------------------------------------------");
                      break;
                  case 7:
-                     System.out.println("------------------------------------------------------------------------------------------------------");
                      handleAddNewStudent(scoreboard);
-                     System.out.println("------------------------------------------------------------------------------------------------------");
                      break;
                  case 8:
-                     System.out.println("------------------------------------------------------------------------------------------------------");
-                     HandeSaveData(scoreboard);
-                     System.out.println("------------------------------------------------------------------------------------------------------");
+                     HandleSaveData(scoreboard);
                      break;
              }
          }
@@ -101,37 +105,44 @@ scoreboard.loadStudents("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-P
         System.out.println("Handle List Games...");
         System.out.println("------------------------------------------------------------------------------------------------------");
         sb.listGame();
+        System.out.println("------------------------------------------------------------------------------------------------------");
+
 
     }   private static void handleListStudents(Scoreboard sb) {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
         System.out.println("Handle List Students...");
+        System.out.println("--------------------------------------------------------------------------------------------------------------");
         sb.listStudents();
-
-    }   private static void handleStudentReport(Scoreboard sb) {
+        System.out.println("--------------------------------------------------------------------------------------------------------------");
+    }
+    private static void handleStudentReport(Scoreboard sb) {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
         System.out.println("Handle Student Report...");
+        System.out.println("--------------------------------------------------------------------------------------------------------------");
         sb.listStudents();
         Scanner input = new Scanner(System.in);
-        System.out.println("===============================================================================================================");
+        System.out.println("--------------------------------------------------------------------------------------------------------------");
         System.out.println("Enter new user ID");
         String studentID = input.nextLine();
-        System.out.println("===============================================================================================================");
-
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
         //Find student object by ID
-        System.out.println("------------------------------------------------------------------------------------------------------");
+        System.out.println("-------------------------------------------------------------------------------------------------------------");
         Students studentObj = sb.findStudentsId(studentID);
         //Print the report for the student
+        System.out.println("==============================================================================================================");
         System.out.println("Repport for " + studentObj);
         int tot = studentObj.getTotal();
         System.out.println("Total: " + tot);
         double avg = studentObj.getAverage();
         System.out.println("Average: " + avg);
-        System.out.println("------------------------------------------------------------------------------------------------------");
-        System.out.println("===============================================================================================================");
+        System.out.println("==============================================================================================================");
+        System.out.println("-------------------------------------------------------------------------------------------------------------");
     }
 
     private static void handleTopNforAgame(Scoreboard sb) {
@@ -146,11 +157,14 @@ scoreboard.loadStudents("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-P
         int gameIndex = sb.findGameIndexById(gameId);
         System.out.println("Top N: ");
         int topN = in.nextInt();
-        System.out.println("------------------------------------------------------------------------------------------------------");
-        System.out.println("------------------------------------------------------------------------------------------------------");
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+        System.out.println("-------------------------------------------------------------------------------------------------------------");
+        System.out.println("==============================================================================================================");
         sb.showTopNForGame(gameIndex, topN);
-        System.out.println();
-        System.out.println("------------------------------------------------------------------------------------------------------");
+        System.out.println("==============================================================================================================");
+        System.out.println("-------------------------------------------------------------------------------------------------------------");
 
     }
 
@@ -174,24 +188,61 @@ scoreboard.loadStudents("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-P
         int newScore = input.nextInt();
         sb.updateScore(studentID,gameIndex,newScore);
 
-    }   private static void handleGameStats(Scoreboard sb) {
+    }   private static void handleGameStats(Scoreboard sb) throws FileNotFoundException {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
+        System.out.println("------------------------------------------------------------------------------------------------------");
+        sb.listGame();
+        System.out.println("------------------------------------------------------------------------------------------------------");
+        Scanner input = new Scanner(System.in);
+        System.out.println();
+        System.out.println("------------------------------------------------------------------------------------------------------");
+
+        System.out.println("Enter game ID: ");
+        int gameID = input.nextInt();
+        System.out.println("------------------------------------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("------------------------------------------------------------------------------------------------------");
+        System.out.println("=======================================================================================================");
+        sb.computeStatsForGame(gameID);
+        System.out.println("=======================================================================================================");
+        System.out.println("------------------------------------------------------------------------------------------------------");
+        System.out.println();
     }
     private static void handleAddNewStudent(Scoreboard sb) {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
-
         System.out.println("Handle Add New Student...");
-
-    }   private static void HandeSaveData(Scoreboard sb) {
+        sb.listStudents();
+        System.out.println("DO NOT USE THE NAME ID OR NAME ");
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter student ID: ");
+        String studentID = input.nextLine();
+        System.out.println("Enter student name: ");
+        String studentName  = input.nextLine();
+        int[] newScore = new int[10];
+        Students newStudent = new Students(studentID, studentName, newScore);
+        sb.addStudent(newStudent);
+    }
+    private static void HandleSaveData(Scoreboard sb) throws IOException {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
-        System.out.println("Hande Save Data...");
-        
+        System.out.println("Handle Save Data...");
+        FileWriter text = new FileWriter("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-Proyect/src/VideoGame_Final_Proyect/scores_2.txt", false);
+        PrintWriter pw = new PrintWriter(text);
+        for (int i =0 ; i<sb.getStudentCount(); i++){
+            pw.println(sb.getStudents()[i].toDataLine());
+        }
+        FileWriter text_1 = new FileWriter("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-Proyect/src/VideoGame_Final_Proyect/games_2.txt", false);
+        PrintWriter pw_1 = new PrintWriter(text_1);
+        for (int i =0 ; i<10; i++){
+            pw_1.println(sb.getGames()[i].toDataLine());
+        }
+        pw.close();
+        pw_1.close();
     }
 
 
