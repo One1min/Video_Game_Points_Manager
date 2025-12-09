@@ -179,7 +179,7 @@ scoreboard.loadStudents("/Users/ricardo/IdeaProjects/VideoGame-Repository-Java-P
         System.out.println("Enter student ID: ");
         String studentID = input.nextLine();
         sb.listGame();
-        System.out.println("Enter game ID");
+        System.out.println("Enter game ID: ");
         int gameID = input.nextInt();
         Students currentStudent = sb.findStudentsId(studentID);
         int gameIndex = sb.findGameIndexById(gameID);
